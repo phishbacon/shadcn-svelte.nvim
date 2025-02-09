@@ -1,5 +1,18 @@
 local M = {}
 
+---@param input number
+---@param min number
+---@param max number
+local function clamp(input, min, max)
+  if input < min then
+    return min
+  elseif input > max then
+    return max
+  else
+    return input
+  end
+end
+
 --- Only allow these package_managers
 ---@alias shadcn.SupportedPackageManagers "pnpm" | "bun" | "yarn" | "npm"
 
@@ -199,8 +212,8 @@ local components = {
 local options = {
   package_manager = "pnpm",
   window_size = {
-    width = math.floor(vim.o.columns * 0.6),
-    height = math.floor(vim.o.lines * 0.3),
+    width = 60, --- math.floor(vim.o.columns * 0.6),
+    height = 30, --- math.floor(vim.o.lines * 0.3),
   },
   keymap = {
     close_window = "<Esc>",
@@ -241,8 +254,11 @@ end
 ---@param command_string string
 ---@param opts shadcn.Options
 local function create_terminal_window(command_string, opts)
-  local row = math.floor((vim.o.lines - opts.window_size.height) / 2)
-  local col = math.floor((vim.o.columns - opts.window_size.width) / 2)
+  local width = math.floor(vim.o.columns * clamp(opts.window_size.width, 1, 100) / 100);
+  local height = math.floor(vim.o.lines * clamp(opts.window_size.height, 1, 100) / 100);
+
+  local row = math.floor((vim.o.lines - height) / 2)
+  local col = math.floor((vim.o.columns - width) / 2)
 
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_open_win(buf, true, {
