@@ -208,8 +208,9 @@ local options = {
 }
 
 ---@param component shadcn.Component
-local function create_shadcn_command(component)
-  local package_manager_info = package_managers[options.package_manager]
+---@param opts shadcn.Options
+local function create_shadcn_command(component, opts)
+  local package_manager_info = package_managers[opts.package_manager]
   local command = ""
   --- We have a component with no dependencies
   if component.dependencies == nil then
@@ -237,9 +238,11 @@ local function create_shadcn_command(component)
   return command
 end
 
-local function create_terminal_window(command_string)
-  local row = math.floor((vim.o.lines - options.window_size.height) / 2)
-  local col = math.floor((vim.o.columns - options.window_size.width) / 2)
+---@param command_string string
+---@param opts shadcn.Options
+local function create_terminal_window(command_string, opts)
+  local row = math.floor((vim.o.lines - opts.window_size.height) / 2)
+  local col = math.floor((vim.o.columns - opts.window_size.width) / 2)
 
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_open_win(buf, true, {
@@ -261,8 +264,8 @@ end
 function M.install_component(component_string)
   local component = components[component_string]
   if component ~= nil then
-    local command = create_shadcn_command(component)
-    create_terminal_window(command)
+    local command = create_shadcn_command(component, options)
+    create_terminal_window(command, options)
   else
     print("Invalid component entered")
   end
