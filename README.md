@@ -1,7 +1,10 @@
 # shadcn-svelte.nim
 
 A plugin for quick installation of shadcn-svelte components into your project
-
+![Component Not Installed](showcase/error.png)
+![Popup](showcase/popup.png)
+![Popup Complete](showcase/popup-complete.png)
+![Component Available](showcase/component-available.png)
 
 ## Installation
 
