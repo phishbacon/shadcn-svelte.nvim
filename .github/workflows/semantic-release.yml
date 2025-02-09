@@ -15,7 +15,7 @@ jobs:
 
     name: Semantic Release
     runs-on: ubuntu-latest
-    premissions:
+    permissions:
       contents: write
 
     steps:
