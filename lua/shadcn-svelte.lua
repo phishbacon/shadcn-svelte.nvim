@@ -254,8 +254,8 @@ end
 ---@param command_string string
 ---@param opts shadcn.Options
 local function create_terminal_window(command_string, opts)
-  local width = math.floor(vim.o.columns * clamp(opts.window_size.width, 1, 100) / 100);
-  local height = math.floor(vim.o.lines * clamp(opts.window_size.height, 1, 100) / 100);
+  local width = math.floor(vim.o.columns * (clamp(60, 1, 100) / 100));
+  local height = math.floor(vim.o.lines * (clamp(30, 1, 100) / 100));
 
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
