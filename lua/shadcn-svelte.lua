@@ -33,8 +33,8 @@ local package_managers = {
 
 ---@type shadcn.Components
 local components = {
-  ["accordian"] = {
-    text = "accordian",
+  ["accordion"] = {
+    text = "accordion",
   },
   ["alert"] = {
     text = "alert"
