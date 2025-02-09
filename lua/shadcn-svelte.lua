@@ -202,9 +202,9 @@ local components = {
 ---@field close_window string: The keymap to close the floating window
 ---
 ---@class shadcn.Options
----@field package_manager shadcn.SupportedPackageManagers: The package manager to use when installing components and dependencies
----@field window_size shadcn.WindowSize: The size of the floating terminal window
----@field keymap shadcn.Keymap: The keypmaps
+---@field package_manager? shadcn.SupportedPackageManagers: The package manager to use when installing components and dependencies
+---@field window_size? shadcn.WindowSize: The size of the floating terminal window
+---@field keymap? shadcn.Keymap: The keypmaps
 
 
 --- Default to pnpm and 60 percent window size
