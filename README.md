@@ -1,4 +1,4 @@
-# shadcn-svelte.nim
+# shadcn-svelte.nvim
 
 A plugin for quick installation of shadcn-svelte components into your project
 ![Component Not Installed](showcase/error.png)
