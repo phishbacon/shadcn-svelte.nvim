@@ -14,7 +14,7 @@ Install with you preferred plugin manager
 
 ```lua
 {
-  "phishbacon/shadcn-svelte.nim"
+  "phishbacon/shadcn-svelte.nvim"
 }
 ```
 
